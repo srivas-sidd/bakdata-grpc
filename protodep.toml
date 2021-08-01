@@ -1,0 +1,5 @@
+proto_outdir = ""
+
+[[dependencies]]
+  target = "github.com/stormcat24/protodep/protobuf"
+  branch = "master"

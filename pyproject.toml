@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "bakdataurlcomponent2"
+version = "0.1.0"
+description = ""
+authors = ["Siddhartha Srivastava <siddhartha@delphai.com>"]
+
+[tool.poetry.dependencies]
+python = "3.8.11"
+asyncio = "^3.4.3"
+pygooglenews = "^0.1.2"
+pytest = "^6.2.4"
+pytest-snapshot = "^0.6.1"
+grpcio = "^1.39.0"
+grpcio-tools = "^1.39.0"
+delphai-utils = "^0.2.29"
+poethepoet = "^0.10.0"
+pytest-asyncio = "^0.15.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+start = "python src/server.py"
+codegen = [
+  {cmd = "mkdir -p ./src"},
+  {cmd = "protodep up"},
+  {cmd = "python -m grpc_tools.protoc -I. --grpc_python_out=. --python_out=. ./protofile/*.proto"},
+]
+test = "pytest"
+test-update = "pytest --snapshot-update"

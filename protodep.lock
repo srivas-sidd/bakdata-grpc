@@ -1,0 +1,8 @@
+proto_outdir = "./proto"
+
+[[dependencies]]
+  target = "github.com/stormcat24/protodep/protobuf"
+  revision = "e87868fb06488f0f0334696a3a08c102b73f44ed"
+  branch = "master"
+  path = ""
+  protocol = ""

@@ -1,0 +1,15 @@
+syntax = 'proto3';
+
+package produceurl;
+
+message UrlRequest {
+  string req = 1;
+}
+
+message UrlResponse {
+  repeated string url = 1;
+}
+
+service ProduceUrl {
+  rpc SendUrl(UrlRequest) returns (UrlResponse) {}
+}
